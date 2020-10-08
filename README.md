@@ -1,20 +1,18 @@
-# (TODO: your game's title)
+# Sim Basketball Career
 
 Author: Zizhuo Lin
 
-Design: (TODO: In two sentences or fewer, describe what is new and interesting about your game.)
+Design: Starting from an NCAA player, gain hidden points of every choice and decide which career path you will go.
 
-Text Drawing: (TODO: how does the text drawing in this game work? Is text precomputed? Rendered at runtime? What files or utilities are involved?)
+Text Drawing:
+The text is read from plain text file and rendered at the runtime. Use harfbuzz and freetype to create texture for each character in the string and then use the texture and glyph_info of harfbuzz to do rendering.
 
 Screen Shot:
 
 ![Screen Shot](screenshot.png)
 
 How To Play:
-
-(TODO: describe the controls and (if needed) goals/strategy.)
-
-Sources: (TODO: list a source URL for any assets you did not create yourself. Make sure you have a license for the asset.)
+Use 1 or 2 to select your choice
 
 This game was built with [NEST](NEST.md).
 
