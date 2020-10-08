@@ -19,12 +19,15 @@
 //Includes for libSDL:
 #include <SDL.h>
 
+#include "data_path.hpp"
+
 //...and for c++ standard library functions:
 #include <chrono>
 #include <iostream>
 #include <stdexcept>
 #include <memory>
 #include <algorithm>
+#include <map>
 
 int main(int argc, char **argv) {
 #ifdef _WIN32
@@ -57,7 +60,7 @@ int main(int argc, char **argv) {
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 		1280, 720, //TODO: modify window size if you'd like
 		SDL_WINDOW_OPENGL
-		| SDL_WINDOW_RESIZABLE //uncomment to allow resizing
+		// | SDL_WINDOW_RESIZABLE //uncomment to allow resizing
 		| SDL_WINDOW_ALLOW_HIGHDPI //uncomment for full resolution on high-DPI screens
 	);
 
@@ -80,6 +83,12 @@ int main(int argc, char **argv) {
 
 	//On windows, load OpenGL entrypoints: (does nothing on other platforms)
 	init_GL();
+
+	// OpenGL state
+    // ------------
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	//Set VSYNC + Late Swap (prevents crazy FPS):
 	if (SDL_GL_SetSwapInterval(-1) != 0) {

@@ -104,7 +104,7 @@ GAME_NAMES =
 	PlayMode
 	main
 	LitColorTextureProgram
-	#ColorTextureProgram #not used right now, but you might want it
+	#not used right now, but you might want it
 	Sound
 	load_wav
 	load_opus
@@ -115,6 +115,7 @@ COMMON_NAMES =
 	PathFont
 	PathFont-font
 	DrawLines
+	DrawText
 	ColorProgram
 	Scene
 	Mesh
@@ -123,6 +124,7 @@ COMMON_NAMES =
 	Mode
 	GL
 	Load
+	ColorTextureProgram
 	;
 
 SHOW_MESHES_NAMES =
