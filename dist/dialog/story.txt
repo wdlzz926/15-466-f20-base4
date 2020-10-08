@@ -4,6 +4,10 @@ What do you want to do?
 Your roommate and teammate Andrew invite you to a welcome party.
 The time conflict with your personal scheduled training time.
 -
+Here comes to the first game, will you ask for more playing time?
+-
+You are also a computer science student, and now it is time for an due of super hard project.
+-
 Your good performance in NCAA make you get selected 42nd by San Antonio Spurs
 Become undrafted player and return to university as part of coach team
 Give up basketball career and graduate with computer science degree

@@ -224,9 +224,9 @@ void PlayMode::update(float elapsed) {
 	if(step == story.size()-1 && !end){
 		//end of game
 		std::cout<<"game end"<<std::endl;
-		if (skill>1){
+		if (skill>3){
 			createText(story[step][0],story_c);
-		}else if(relation>1){
+		}else if(relation>2){
 			createText(story[step][1],story_c);
 		}else{
 			createText(story[step][2],story_c);
@@ -265,9 +265,9 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS); //this is the default depth comparison function, but FYI you can change it.
-	renderText(story_c,100.0f, 900.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+	renderText(story_c,100.0f, 900.0f, 1.0f, glm::vec3(0.78f, 0.78f, 0.78f));
 	if (!end){
-		renderText(choice_c,100.0f, 200.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+		renderText(choice_c,100.0f, 200.0f, 1.0f, glm::vec3(0.83f, 0.35f, 0.1f));
 	}
 	// scene.draw(*camera);
 	glUseProgram(0);
