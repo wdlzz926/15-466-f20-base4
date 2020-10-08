@@ -1,6 +1,6 @@
 # (TODO: your game's title)
 
-Author: (TODO: your name)
+Author: Zizhuo Lin
 
 Design: (TODO: In two sentences or fewer, describe what is new and interesting about your game.)
 

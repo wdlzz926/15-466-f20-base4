@@ -14,6 +14,10 @@
 #include <random>
 #include <fstream>
 
+//text rendering based on https://learnopengl.com/In-Practice/Text-Rendering
+//Some idea of usage of harbuzz from https://github.com/GenBrg/MarryPrincess/blob/master/DrawFont.cpp
+//Thanks Jiasheng for sharing his code
+
 FT_Face face;
 unsigned int glyph_count;
 hb_font_t *hb_font{nullptr};
@@ -77,7 +81,6 @@ void createText(std::string text, std::vector<std::vector<Character>> &texts){
                 texture,
                 glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
                 glm::ivec2(face->glyph->bitmap_left+glyph_pos[i].x_offset/64.0f, face->glyph->bitmap_top+glyph_pos[i].y_offset/64.0f),
-                // static_cast<unsigned int>(face->glyph->advance.x)
                 static_cast<unsigned int>(glyph_pos[i].x_advance)
             };
             char_vec.push_back(character);
@@ -206,14 +209,28 @@ void PlayMode::update(float elapsed) {
 		}else if(right.pressed){
 			c = choice[step][3];
 		}
+		if (c[0] == 'A'){
+			skill++;
+		}else if (c[0] == 'B'){
+			relation++;
+		}else if (c[0] == 'C'){
+			study++;
+		}
 		step++;
 		change = true;
 		story_c.clear();
 		choice_c.clear();
 	}
-	if(step == story.size()){
+	if(step == story.size()-1 && !end){
 		//end of game
-		load_game_text(story, "dialog/end.txt");
+		std::cout<<"game end"<<std::endl;
+		if (skill>1){
+			createText(story[step][0],story_c);
+		}else if(relation>1){
+			createText(story[step][1],story_c);
+		}else{
+			createText(story[step][2],story_c);
+		}
 		change = false;
 		end = true;
 	}
@@ -249,7 +266,9 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS); //this is the default depth comparison function, but FYI you can change it.
 	renderText(story_c,100.0f, 900.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
-	renderText(choice_c,100.0f, 200.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+	if (!end){
+		renderText(choice_c,100.0f, 200.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+	}
 	// scene.draw(*camera);
 	glUseProgram(0);
 	GL_ERRORS();
